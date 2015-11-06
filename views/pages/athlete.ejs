@@ -6,13 +6,15 @@
 <body class="container">
 
 <header>
-    Athlete Profile: <span class='username'><%= payload.username%></span>
+    <h1>Athlete Profile</h1>
 </header>
 
 <main>
 
     <div id="athlete" class="athelete" data-id="<%= payload.id%>">
         <p class="name"><%= displayName(payload.firstname, payload.lastname) %></p>
+        <span class='username'><%= payload.username%></span>
+        <p class="location"><%=payload.city%>,<%=payload.state%>,<%=payload.country%></p>
         <img src="<%= payload.profile%>" alt="<%= payload.username %>" class="profileimage" />
 
         <div class="shoes">
