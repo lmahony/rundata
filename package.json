@@ -1,0 +1,17 @@
+{
+  "name": "rundata",
+  "version": "1.0.0",
+  "description": "running data from strava",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "larry mahony",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "node-cache": "^3.0.0",
+    "strava-v3": "^1.8.1"
+  }
+}

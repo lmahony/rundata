@@ -1,0 +1,16 @@
+td {
+
+}
+header {
+    clear: both;
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+}
+
+footer {
+    clear: both;
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+}

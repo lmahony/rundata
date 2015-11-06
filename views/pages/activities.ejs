@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/header %>
+</head>
+<body class="container">
+
+<header>
+    Activities
+</header>
+
+<main>
+
+    <table id="activities-table" class="tablesorter">
+        <thead>
+            <tr>
+                <th>Date</th><th>Type</th><th>Name</th><th>Distance (km)</th><th>Elevation gain (m)</th><th>Time (mins)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% payload.forEach(function(activity) { %>
+            <tr id="activity-<%= activity.id %>" class="activity-row">
+                <td><%= displayDate(activity.start_date_local) %></td>
+                <td><%= activity.type %></td>
+                <td><a href="http://www.strava.com/activities/<%= activity.id %>" target="_blank"><%= activity.name %></a></td>
+                <td><%= displayRunDistance(activity.distance) %></td>
+                <td><%= activity.total_elevation_gain %></td>
+                <td><%= displayRunTime(activity.moving_time) %></td>
+            </tr>
+
+            <% }); %>
+        </tbody>
+    </table>
+
+</main>
+
+<footer>
+    <% include ../partials/footer %>
+</footer>
+
+</body>
+</html>

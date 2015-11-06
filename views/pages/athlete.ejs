@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/header %>
+</head>
+<body class="container">
+
+<header>
+    Athlete Profile: <span class='username'><%= payload.username%></span>
+</header>
+
+<main>
+
+    <div id="athlete" class="athelete" data-id="<%= payload.id%>">
+        <p class="name"><%= displayName(payload.firstname, payload.lastname) %></p>
+        <img src="<%= payload.profile%>" alt="<%= payload.username %>" class="profileimage" />
+
+        <div class="shoes">
+            <h3>Shoes</h3>
+            <ul>
+            <% payload.shoes.forEach(function(shoe) { %>
+                <li>
+                    <span class="shoename"><%= shoe.name%></span> :
+                    <span class="metric distance"><%= displayRunDistance(shoe.distance) %></span>
+                </li>
+            <% }); %>
+            </ul>
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    <% include ../partials/footer %>
+</footer>
+
+</body>
+</html>
