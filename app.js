@@ -38,12 +38,33 @@ app.get('/athlete', function(req, res){
     });
 });
 
-app.get('/activities', function(re,res){
+app.get('/activities', function(req,res){
     strava.athlete.listActivities({}, function(err, payload){
         if (!err) {
             res.render('pages/activities', {payload: payload});
         } else {
             console.log(err);
+            res.send(err);
+        }
+    });
+});
+
+app.get('/activity/:id', function(req,res){
+    strava.activities.get({id:req.params.id}, function(err, payload){
+        if (!err) {
+            res.render('pages/activity', {payload: payload});
+        } else {
+            console.log(err);
+            res.send(err);
+        }
+    });
+});
+
+app.get('/raw/activity/:id', function(req,res){
+    strava.activities.get({id:req.params.id}, function(err, payload){
+        if (!err) {
+            res.send(payload);
+        } else {
             res.send(err);
         }
     });
