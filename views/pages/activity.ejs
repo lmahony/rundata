@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="http://openlayers.org/en/v3.10.1/css/ol.css" type="text/css">
     <style>
         .map {
-            height: 400px;
-            width: 100%;
+            height: 600px;
+            width: 90%;
         }
         .hidden {
             display: none;
@@ -18,15 +18,19 @@
 
 <header>
     <h1>Activity</h1>
+    <% include ../partials/navmenu %>
 </header>
 
 <main>
 
     <div id="activity" class="activity" data-id="<%= payload.id%>">
         <h3><%= payload.name%></h3>
-        <%= displayDate(payload.start_date) %>
-        <ul>
+        <span class="date"><%= displayDate(payload.start_date) %></span>
+        <span class="date"><%= displayTime(payload.start_date) %></span>
+        <span class="location"> at <%= payload.location_city%></span>
+        <ul class="runstats">
             <li>Distance: <span class="metric"><%= displayRunDistance(payload.distance) %></span></li>
+            <li>Elevation gain: <span class="metric"><%= payload.total_elevation_gain%></span></li>
             <li>Time:
                 <ul>
                     <li>Total: <%= displayRunTime(payload.elapsed_time) %> mins </li>
@@ -65,7 +69,6 @@
 
         </script>
 
-        </script>
     </div>
 
 </main>

@@ -9,13 +9,14 @@ var app = express();
 app.set('view engine', 'ejs');
 app.use('/assets', express.static('assets'));
 
-app.get('/', function (req, res) {
-    res.send('Hello World!');
-});
+
 
 /* helper methods for views */
 app.locals.displayDate = function(dateStr) {
     return dateStr.toUpperCase().split("T")[0];
+};
+app.locals.displayTime = function(dateStr) {
+    return dateStr.toUpperCase().split("T")[1].split("Z")[0];
 };
 app.locals.displayRunDistance = function(metres) {
     return Math.round((metres/1000) * 100) / 100;
@@ -26,6 +27,28 @@ app.locals.displayRunTime = function(time) {
 app.locals.displayName = function(first, last) {
     return helpers.capitalizeInitial(first) + " " + helpers.capitalizeInitial(last);
 }
+app.locals.displayWorkoutType = function(workout) {
+    switch (workout) {
+        case 1:
+            return "";
+            break;
+        case 2:
+            return "Long Run";
+            break;
+        case 3:
+            return "Workout";
+            break;
+        case 4:
+            return "Race";
+            break;
+        default:
+            return "";
+    }
+}
+
+app.get('/', function (req, res) {
+    res.send('RunData!');
+});
 
 app.get('/athlete', function(req, res){
     strava.athlete.get({}, function(err, payload){

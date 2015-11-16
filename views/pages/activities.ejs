@@ -7,6 +7,7 @@
 
 <header>
     Activities
+    <% include ../partials/navmenu %>
 </header>
 
 <main>
@@ -14,7 +15,7 @@
     <table id="activities-table" class="tablesorter" data-order='[[ 1, "asc" ]]' data-page-length='15'>
         <thead>
             <tr>
-                <th>Date</th><th>Type</th><th>Name</th><th>Distance (km)</th><th>Elevation gain (m)</th><th>Time (mins)</th>
+                <th>Date</th><th>Type</th><th>Workout Type</th><th>Name</th><th>Distance (km)</th><th>Elevation gain (m)</th><th>Time (mins)</th>
             </tr>
         </thead>
         <tbody>
@@ -22,7 +23,8 @@
             <tr id="activity-<%= activity.id %>" class="activity-row">
                 <td><%= displayDate(activity.start_date_local) %></td>
                 <td><%= activity.type %></td>
-                <td><a href="/activity/<%= activity.id %>" target="_blank"><%= activity.name %></a></td>
+                <td><%= displayWorkoutType(activity.workout_type) %></td>
+                <td><a href="/activity/<%= activity.id %>"><%= activity.name %></a></td>
                 <td><%= displayRunDistance(activity.distance) %></td>
                 <td><%= activity.total_elevation_gain %></td>
                 <td><%= displayRunTime(activity.moving_time) %></td>
